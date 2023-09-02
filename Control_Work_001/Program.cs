@@ -9,3 +9,26 @@
         [“1234”, “1567”, “-2”, “computer science”] → [“-2”]
         [“Russia”, “Denmark”, “Kazan”] → []
 */
+
+
+
+using System;
+using static System.Console;
+
+Clear();
+
+Write("Введите значения: ");
+string[] string_Array1 = GetArrayFromString(ReadLine());
+
+WriteLine("Вывод: " + String.Join(" ", string_Array1));
+
+string[] GetArrayFromString(string string_Array1)
+{
+    string[] array = string_Array1.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+    string[] result = new string[array.Length];
+    for(int i = 0; i <result.Length; i++) 
+    {
+        result[i] = (array[i]);
+    }
+    return result;
+}
