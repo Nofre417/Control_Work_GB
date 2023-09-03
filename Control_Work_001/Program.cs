@@ -11,24 +11,68 @@
 */
 
 
-
 using System;
 using static System.Console;
 
 Clear();
 
+// Взаимодействие с пользователем через консоль. Просим ввести данные.
 Write("Введите значения: ");
 string[] string_Array1 = GetArrayFromString(ReadLine());
+WriteLine();
 
-WriteLine("Вывод: " + String.Join(" ", string_Array1));
+// Сохраняем количество элементов.
+int amountElement = GetAmountElement(string_Array1);
 
-string[] GetArrayFromString(string string_Array1)
+// Инициализируем новый массив и выводим все данные через консоль.
+string[] string_Array2 = GetNewArrayFromArray(string_Array1, amountElement);
+Write("Новый массив: " + String.Join(" ", string_Array2));
+
+
+// Метод чтения данных вводимых пользователем из терминала.
+string[] GetArrayFromString(string inArray)
 {
-    string[] array = string_Array1.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+    string[] array = inArray.Split(' ', StringSplitOptions.RemoveEmptyEntries);
     string[] result = new string[array.Length];
-    for(int i = 0; i <result.Length; i++) 
+    for (int i = 0; i < result.Length; i++)
     {
         result[i] = (array[i]);
+    }
+    return result;
+}
+
+// Метод который вычесляет количество элементов <= 3 из массива и выдает это количество.
+int GetAmountElement(string[] inArray)
+{
+    int result = 0;
+
+    for (int i = 0; i < inArray.Length; i++)
+    {
+        if (inArray[i].Length <= 3)
+        {
+            result++;
+        }
+        else continue;
+    }
+    return result;
+}
+
+
+// Метод который получает входной массив и количество элементов для размера нового массива,
+// на основе этих данных создает новый массив с элементами которые <= 3.
+string[] GetNewArrayFromArray(string[] inArray, int amountElement)
+{
+    string[] result = new string[amountElement];
+    int index = 0;
+
+    for (int i = 0; i < inArray.Length; i++)
+    {
+        if (inArray[i].Length <= 3)
+        {
+            result[index] = inArray[i];
+            index++;
+        }
+        else continue;
     }
     return result;
 }
