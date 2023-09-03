@@ -26,7 +26,7 @@ int amountElement = GetAmountElement(string_Array1);
 
 // Инициализируем новый массив и выводим все данные через консоль.
 string[] string_Array2 = GetNewArrayFromArray(string_Array1, amountElement);
-Write("Новый массив: " + String.Join(" ", string_Array2));
+Write("Новый массив: " + String.Join(", ", string_Array2));
 
 
 // Метод чтения данных вводимых пользователем из терминала.
